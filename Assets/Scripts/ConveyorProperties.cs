@@ -10,4 +10,6 @@ public class ConveyorProperties : MonoBehaviour
     public int bottomEdgeYPosition = -8;
     public float speed = 1f;
     public int size = 1;
+    public GameObject obstaclePrefab;
+    public float obstacleSpawnChance = 0.2f;
 }
