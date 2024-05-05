@@ -13,8 +13,13 @@ public class GameManager : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
-    private int player1Score = 0;
-    private int player2Score = 0;
+    public UIControl uiControl;
+
+    [SerializeField] private int player1Score = 0;
+    [SerializeField] private int player2Score = 0;
+
+    [SerializeField] private int player1Position = 0;
+    [SerializeField] private int player2Position = 0;
 
     private void Awake()
     {
@@ -26,10 +31,15 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("singleton violation");
         }
+        uiControl.ChangeScore(1,player1Score);
+        uiControl.ChangeScore(2,player2Score);
+        uiControl.ChangePosition(1,player1Position);
+        uiControl.ChangePosition(2,player2Position);
     }
 
     public void Score(int scoringPlayer)
     {
+        //Scores
         if (scoringPlayer == 1)
         {
             player1Score++;
@@ -43,7 +53,30 @@ public class GameManager : MonoBehaviour
             Debug.Log("invalid player number");
         }
         Debug.Log(player1Score + "-" + player2Score);
-        // add score ui
+
+        //Positions
+        if (player1Score > player2Score)
+        {
+            player1Position = 1;
+            player2Position = 2;            
+        }
+        else if (player1Score < player2Score)
+        {
+            player1Position = 2;
+            player2Position = 1;            
+        }
+        else
+        {
+            player1Position = 0;
+            player2Position = 0;
+        }
+
+        //UI
+        uiControl.ChangeScore(1,player1Score);
+        uiControl.ChangeScore(2,player2Score);
+        uiControl.ChangePosition(1,player1Position);
+        uiControl.ChangePosition(2,player2Position);
+        //
         player1.GetComponent<SushiMove>().ResetPosition();
         player2.GetComponent<SushiMove>().ResetPosition();
     }

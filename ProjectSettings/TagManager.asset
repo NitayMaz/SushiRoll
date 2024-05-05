@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Conveyor
+    uniqueID: 2165245979
+    locked: 0
   - name: Sushi
     uniqueID: 1275982695
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3238879487
     locked: 0

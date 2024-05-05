@@ -11,5 +11,12 @@ public class Plate : MonoBehaviour
             SushiMove sushiMove = collision.gameObject.GetComponent<SushiMove>();
             sushiMove.ResetPosition();
         }
+
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+            obstacle.Die();
+        }
+
     }
 }

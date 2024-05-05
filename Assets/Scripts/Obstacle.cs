@@ -20,6 +20,7 @@ public class Obstacle : MonoBehaviour
     {
         transform.Translate(Vector3.up * verticalSpeed * Time.deltaTime);
 
+        //added die function instead of this calculation to fit conveyors on a section of the screen
         if (transform.position.y < bottomEdgeY - obstacleSize || transform.position.y > topEdgeY + obstacleSize)
         {
             Destroy(gameObject);
@@ -29,5 +30,10 @@ public class Obstacle : MonoBehaviour
     public void SetVerticalSpeed(float speed)
     {
         verticalSpeed = speed;
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
