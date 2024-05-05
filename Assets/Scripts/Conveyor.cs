@@ -7,7 +7,7 @@ public class Conveyor : MonoBehaviour
     public float speed;
 
     public Vector2 obstacleSpawnOffset;
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefabs;
     public float minTimeBetweenObstacles;
     public float maxTimeBetweenObstacles;
 
@@ -24,7 +24,8 @@ public class Conveyor : MonoBehaviour
         if (timeToNextObstacle <= 0)
         {
             timeToNextObstacle = Random.Range(minTimeBetweenObstacles, maxTimeBetweenObstacles);
-            GameObject newObstacle = Instantiate(obstaclePrefab, (Vector2)transform.position + obstacleSpawnOffset, Quaternion.identity);
+            int obstacleID = Random.Range(0,obstaclePrefabs.Length);
+            GameObject newObstacle = Instantiate(obstaclePrefabs[obstacleID], (Vector2)transform.position + obstacleSpawnOffset, Quaternion.identity);
             newObstacle.GetComponent<Obstacle>().SetVerticalSpeed(speed);
         }
     }

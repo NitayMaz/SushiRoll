@@ -17,9 +17,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int player1Score = 0;
     [SerializeField] private int player2Score = 0;
-
     [SerializeField] private int player1Position = 0;
     [SerializeField] private int player2Position = 0;
+
+    [SerializeField] private int round = 1;
 
     private void Awake()
     {
@@ -71,11 +72,14 @@ public class GameManager : MonoBehaviour
             player2Position = 0;
         }
 
+        round++;
+
         //UI
         uiControl.ChangeScore(1,player1Score);
         uiControl.ChangeScore(2,player2Score);
         uiControl.ChangePosition(1,player1Position);
         uiControl.ChangePosition(2,player2Position);
+        uiControl.ChangeRound(round);
         //
         player1.GetComponent<SushiMove>().ResetPosition();
         player2.GetComponent<SushiMove>().ResetPosition();

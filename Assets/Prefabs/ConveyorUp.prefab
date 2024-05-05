@@ -98,11 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a420d219714c84f9a38d5bcde6360b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   obstacleSpawnOffset: {x: 0, y: 0.5}
-  obstaclePrefab: {fileID: 934942874588963594, guid: 7b312e9e44576d044bd42299516acaec, type: 3}
+  obstaclePrefabs:
+  - {fileID: 934942874588963594, guid: 7b312e9e44576d044bd42299516acaec, type: 3}
+  - {fileID: 934942874588963594, guid: 213e76a9cb3bd2045ad55d52e20ede98, type: 3}
   minTimeBetweenObstacles: 3
-  maxTimeBetweenObstacles: 5
+  maxTimeBetweenObstacles: 6
 --- !u!61 &2650804004649338330
 BoxCollider2D:
   m_ObjectHideFlags: 0

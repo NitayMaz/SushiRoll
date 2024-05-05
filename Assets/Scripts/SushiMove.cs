@@ -74,12 +74,19 @@ public class SushiMove : MonoBehaviour
 
         //0.5 space for the y value so sushi and barrier don't overlap
         Collider2D barrier = Physics2D.OverlapBox(destination,new Vector2(0,0.5f),0f,LayerMask.GetMask("Barrier"));
-        //Collider2D obstacle = Physics2D.OverlapBox(destination, Vector2.zero, 0f, LayerMask.GetMask("Obstacle"));
+        Collider2D obstacle = Physics2D.OverlapBox(destination, Vector2.zero, 0f, LayerMask.GetMask("Obstacle"));
 
         // Prevent any movement if there is a barrier
         if (barrier != null) {
             return;
         }
+
+        //death by obstacle
+        if (obstacle != null) {
+            ResetPosition();
+            return;
+        }
+
         timeSinceLastMove = 0f;
         transform.position = destination;
     }
